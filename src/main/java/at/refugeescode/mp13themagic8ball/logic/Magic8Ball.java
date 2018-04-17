@@ -10,7 +10,14 @@ import java.util.stream.Stream;
 @Service
 public class Magic8Ball {
 
-    public List<String> makeMessages() {
+    public String getRandomMessage() {
+        List<String> message = makeMessages();
+        Collections.shuffle(message);
+        String firstMessage = message.get(0);
+        return firstMessage;
+    }
+
+    private List<String> makeMessages() {
         return Stream.of("It is certain",
                 "It is decidedly so",
                 "Without a doubt",
@@ -32,13 +39,6 @@ public class Magic8Ball {
                 "Outlook not so good",
                 "Very doubtful")
                 .collect(Collectors.toList());
-    }
-
-    public String getRandomMessage() {
-        List<String> message = makeMessages();
-        Collections.shuffle(message);
-        String firstMessage = message.get(0);
-        return firstMessage;
     }
 
 }
